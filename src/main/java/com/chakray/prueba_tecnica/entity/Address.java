@@ -3,7 +3,7 @@ package com.chakray.prueba_tecnica.entity;
 
 public class Address {
 
-    private int id;
+    private long id;
     private String name;
     private String street;
     private String country_code;
@@ -11,14 +11,14 @@ public class Address {
     public Address(){
 
     }
-    public Address(int id, String name, String street, String country_code) {
+    public Address(long id, String name, String street, String country_code) {
         this.id = id;
         this.name = name;
         this.street = street;
         this.country_code = country_code;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
     public String getName() {
@@ -30,7 +30,7 @@ public class Address {
     public String getCountry_code() {
         return country_code;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
     public void setName(String name) {

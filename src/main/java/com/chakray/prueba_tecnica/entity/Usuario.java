@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Usuario {
 
-    private int id;
+    private long id;
     private String email;
     private String name;
     private String password;
@@ -14,7 +14,7 @@ public class Usuario {
 
     public Usuario() {
     }
-    public Usuario(int id, String email, String name, String password, String created_at, List<Address> addresses) {
+    public Usuario(long id, String email, String name, String password, String created_at, List<Address> addresses) {
         this.id = id;
         this.email = email;
         this.name = name;
@@ -23,7 +23,7 @@ public class Usuario {
         this.addresses = addresses;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
     public String getEmail() {
@@ -41,7 +41,7 @@ public class Usuario {
     public List<Address> getAddresses() {
         return addresses;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
     public void setEmail(String email) {
