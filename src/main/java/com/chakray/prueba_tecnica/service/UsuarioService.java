@@ -60,19 +60,40 @@ public class UsuarioService {
             default:
                 return usuariosCopia;
         }
-
         if (comparator != null) {
             usuariosCopia.sort(comparator);
         }
-
         return usuariosCopia;
     }
 
-
-    public List<Address> getAddressUsserById(Long user_id){
+    public Usuario findUserById(Long user_id){
         for (Usuario usuario : usuarios) {
             if (usuario.getId() == user_id) {
-                return usuario.getAddresses();
+                return usuario;
+            }
+        }
+        return null;
+    }
+    public List<Address> findAddressUserById(Long user_id){
+        Usuario usuario = findUserById(user_id);
+        if (usuario != null){
+            return usuario.getAddresses();
+        } else {
+            return null;
+        }
+    }
+    
+    public Address updateUserAddress(Long user_id, Long address_id, Address updatedAddress) {
+        Usuario usuario = findUserById(user_id);
+        if(usuario == null){
+            return null;
+        }
+        for (Address address : usuario.getAddresses()) {
+            if(address.getId() == address_id){
+                address.setName(updatedAddress.getName());
+                address.setStreet(updatedAddress.getStreet());
+                address.setCountry_code(updatedAddress.getCountry_code());
+                return address;
             }
         }
         return null;

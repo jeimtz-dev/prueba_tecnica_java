@@ -27,9 +27,19 @@ public class UsuarioController {
 
     @GetMapping("/users/{user_id}/addresses")
     public ResponseEntity<List<Address>> addressUserById(@PathVariable Long user_id){
-        List<Address> addresses = this.usuarioService.getAddressUsserById(user_id);
+        List<Address> addresses = this.usuarioService.findAddressUserById(user_id);
         if (addresses != null) {
             return ResponseEntity.ok(addresses);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/users/{user_id}/addresses/{address_id}")
+    public ResponseEntity<Address> updateAddress(@PathVariable Long user_id, @PathVariable Long address_id, @RequestBody Address updatedAddress) {
+        Address address = this.usuarioService.updateUserAddress(user_id, address_id, updatedAddress);
+        if (address != null) {
+            return ResponseEntity.ok(address);
         } else {
             return ResponseEntity.notFound().build();
         }
