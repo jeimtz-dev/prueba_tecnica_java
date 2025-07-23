@@ -1,30 +1,27 @@
-package com.chakray.prueba_tecnica.entity;
+package com.chakray.prueba_tecnica.response;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.chakray.prueba_tecnica.entity.Address;
 
 import java.util.List;
 
 
-public class Usuario {
+public class UserResponse {
+
     private long id;
     private String email;
     private String name;
-    private String password;
     private String created_at;
     private List<Address> addresses;
 
-    public Usuario() {
+    public UserResponse() {
     }
-
-    public Usuario(long id, String email, String name, String password, String created_at, List<Address> addresses) {
+    public UserResponse(long id, String email, String name, String created_at, List<Address> addresses) {
         this.id = id;
         this.email = email;
         this.name = name;
-        this.password = password;
         this.created_at = created_at;
         this.addresses = addresses;
     }
-
     public long getId() {
         return id;
     }
@@ -33,9 +30,6 @@ public class Usuario {
     }
     public String getName() {
         return name;
-    }
-    public String getPassword() {
-        return password;
     }
     public String getCreated_at() {
         return created_at;
@@ -51,9 +45,6 @@ public class Usuario {
     }
     public void setName(String name) {
         this.name = name;
-    }
-    public void setPassword(String password) {
-        this.password = password;
     }
     public void setCreated_at(String created_at) {
         this.created_at = created_at;

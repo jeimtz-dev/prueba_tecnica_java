@@ -1,6 +1,6 @@
 package com.chakray.prueba_tecnica.controller;
 
-
+import com.chakray.prueba_tecnica.response.UserResponse;
 import com.chakray.prueba_tecnica.entity.Address;
 import com.chakray.prueba_tecnica.entity.Usuario;
 import com.chakray.prueba_tecnica.service.UsuarioService;
@@ -42,6 +42,26 @@ public class UsuarioController {
             return ResponseEntity.ok(address);
         } else {
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/users")
+    public ResponseEntity<UserResponse> createUser(@RequestBody Usuario user) {
+        UserResponse usuario = this.usuarioService.createNewUser(user);
+        if (usuario != null) {
+            return ResponseEntity.ok(usuario);
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PatchMapping("/users/{id}")
+    public ResponseEntity<UserResponse> updateUser(@PathVariable Long user_id, @RequestBody Usuario user) {
+        UserResponse usuario = this.usuarioService.updateUSer(user_id, user);
+        if (usuario != null) {
+            return ResponseEntity.ok(usuario);
+        } else {
+            return ResponseEntity.badRequest().build();
         }
     }
 }
