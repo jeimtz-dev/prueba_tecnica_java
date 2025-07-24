@@ -3,7 +3,6 @@ Jonathan Eduardo Ibarra Martinez\
 *jeimtz.dev@gmail.com*
 
 ### Antes de levantar
-Asegurarse de estar en rama de git develop\
 Asegurarse de cargar las dependencias del pom.xml\
 La app base de los endpoints al levantar es:\
 *http://localhost:8080/api/users*
