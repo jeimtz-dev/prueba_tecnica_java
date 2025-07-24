@@ -153,7 +153,43 @@ public class UsuarioService {
         return nowUK.format(DATE_TIME_FORMATTER);
     }
 
-    public UserResponse updateUSer(Long user_id, Usuario usuario){
-        return null;
+    public UserResponse updateUSer(Long user_id, Usuario updateUser){
+        Usuario user = findUserById(user_id);
+        if(user == null){
+            return null;
+        }
+
+        user.setName(updateUser.getName());
+        user.setEmail(updateUser.getEmail());
+        user.setPassword(hashPassword(updateUser.getPassword()));
+        user.setCreated_at(getUKCurrentTimestamp());
+
+        if (user.getAddresses() == null) {
+            user.setAddresses(new ArrayList<>());
+        } else {
+            user.setAddresses(updateUser.getAddresses());
+            for(int i=0; i<user.getAddresses().size(); i++){
+                user.getAddresses().get(i).setId(i+1);
+            }
+        }
+
+        UserResponse userResponse = new UserResponse();
+        userResponse.setName(user.getName());
+        userResponse.setEmail(user.getEmail());
+        userResponse.setId(user.getId());
+        userResponse.setCreated_at(user.getCreated_at());
+        userResponse.setAddresses(user.getAddresses());
+
+        return userResponse;
+    }
+
+
+    public String deleteUser(Long user_id){
+        Usuario usuario = findUserById(user_id);
+        if(usuario == null){
+            return null;
+        }
+        usuarios.remove(usuario);
+        return "Eliminado correctamente";
     }
 }
